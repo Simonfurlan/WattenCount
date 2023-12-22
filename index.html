@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watten Punkte</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        button {
+            width: 50px;
+            height: 30px;
+        }
+
+        #team1Total, #team2Total {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Watten Punkte</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Team 1 Punkte</th>
+            <th>Team 1</th>
+            <th>Team 2</th>
+            <th>Team 2 Punkte</th>
+        </tr>
+    </thead>
+    <tbody style="border: solid;">
+        <tr>
+            <td id="team1PointsList"></td>
+            <td>
+                <button onclick="addPoints('team1', 2)">2</button>
+               
+            </td>
+            <td>
+                <button onclick="addPoints('team2', 2)">2</button>
+                
+            </td>
+            <td id="team2PointsList"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="addPoints('team1', 3)">3</button>
+               
+            </td>
+            <td>
+                <button onclick="addPoints('team2', 3)">3</button>
+                
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="addPoints('team1', 4)">4</button>
+                
+            </td>
+            <td>
+                <button onclick="addPoints('team2', 4)">4</button>
+                
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="addPoints('team1', 5)">5</button>
+                
+            </td>
+            <td>
+                <button onclick="addPoints('team2', 5)">5</button>
+                
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="team1Total"></td>
+            <td><button onclick="undoLastPoint('team1')">Del</button></td>
+            <td><button onclick="undoLastPoint('team2')">Del</button></td>
+            <td id="team2Total"></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    let team1Points = [];
+    let team2Points = [];
+
+    function addPoints(team, points) {
+        if (team === 'team1') {
+            team1Points.push(points);
+            updatePointsList('team1PointsList', team1Points);
+            updateTotal('team1Total', team1Points);
+        } else if (team === 'team2') {
+            team2Points.push(points);
+            updatePointsList('team2PointsList', team2Points);
+            updateTotal('team2Total', team2Points);
+        }
+    }
+
+    function undoLastPoint(team) {
+        if (team === 'team1' && team1Points.length > 0) {
+            team1Points.pop();
+            updatePointsList('team1PointsList', team1Points);
+            updateTotal('team1Total', team1Points);
+        } else if (team === 'team2' && team2Points.length > 0) {
+            team2Points.pop();
+            updatePointsList('team2PointsList', team2Points);
+            updateTotal('team2Total', team2Points);
+        }
+    }
+
+    function updatePointsList(elementId, pointsList) {
+        const element = document.getElementById(elementId);
+        element.innerHTML = '';
+
+        pointsList.forEach(point => {
+            const listItem = document.createElement('li');
+            listItem.textContent = point;
+            element.appendChild(listItem);
+        });
+    }
+
+    function updateTotal(elementId, pointsList) {
+        const element = document.getElementById(elementId);
+        const total = pointsList.reduce((sum, point) => sum + point, 0);
+        element.textContent = `Summe: ${total}`;
+    }
+</script>
+
+</body>
+</html>
