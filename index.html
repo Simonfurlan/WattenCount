@@ -51,7 +51,10 @@
             width: 50px;
             height: 30px;
             font-size: large;
+        }
 
+        #bigButton {
+            font-size: large;
         }
 
         #team1Total, #team2Total {
@@ -85,11 +88,11 @@
         <tr>
             <td></td>
             <td>
-                <button onclick="addPoints('team1', 2)">2</button>
+                <button class="bigButton" onclick="addPoints('team1', 2)">2</button>
                
             </td>
             <td>
-                <button onclick="addPoints('team2', 2)">2</button>
+                <button class="bigButton" onclick="addPoints('team2', 2)">2</button>
                 
             </td>
             <td></td>
@@ -98,11 +101,11 @@
         <tr>
             <td></td>
             <td>
-                <button onclick="addPoints('team1', 3)">3</button>
+                <button class="bigButton" onclick="addPoints('team1', 3)">3</button>
                
             </td>
             <td>
-                <button onclick="addPoints('team2', 3)">3</button>
+                <button class="bigButton" onclick="addPoints('team2', 3)">3</button>
                 
             </td>
             <td></td>
@@ -110,11 +113,11 @@
         <tr>
             <td></td>
             <td>
-                <button onclick="addPoints('team1', 4)">4</button>
+                <button class="bigButton" onclick="addPoints('team1', 4)">4</button>
                 
             </td>
             <td>
-                <button onclick="addPoints('team2', 4)">4</button>
+                <button class="bigButton" onclick="addPoints('team2', 4)">4</button>
                 
             </td>
             <td></td>
@@ -122,19 +125,19 @@
         <tr>
             <td></td>
             <td>
-                <button onclick="addPoints('team1', 5)">5</button>
+                <button class="bigButton" onclick="addPoints('team1', 5)">5</button>
                 
             </td>
             <td>
-                <button onclick="addPoints('team2', 5)">5</button>
+                <button class="bigButton" onclick="addPoints('team2', 5)">5</button>
                 
             </td>
             <td></td>
         </tr>
         <tr>
             <td id="team1Total"></td>
-            <td><button onclick="undoLastPoint('team1')">Del</button></td>
-            <td><button onclick="undoLastPoint('team2')">Del</button></td>
+            <td><button style="font-size: unset;" onclick="undoLastPoint('team1')">Del</button></td>
+            <td><button style="font-size: unset;" onclick="undoLastPoint('team2')">Del</button></td>
             <td id="team2Total"></td>
         </tr>
     </tbody>
